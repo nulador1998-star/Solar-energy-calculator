@@ -1,36 +1,44 @@
-# Solar Energy Calculator v2
+# Solar Energy Calculator v3 (Professional Version)
 
-print("=== Solar Energy Calculator ===\n")
+print("\n==============================")
+print("  SOLAR ENERGY CALCULATOR")
+print("==============================\n")
 
-# User inputs
-panels = int(input("Enter number of solar panels: "))
-panel_watt = float(input("Enter wattage of each panel (W): "))
-battery_capacity = float(input("Enter battery capacity (kWh): "))
-sunlight_hours = float(input("Enter average sunlight hours per day: "))
-efficiency = float(input("Enter system efficiency (%) e.g. 80: "))
+# Inputs
+panels = int(input("Number of solar panels: "))
+panel_watt = float(input("Panel wattage (W): "))
+battery_capacity = float(input("Battery capacity (kWh): "))
+sunlight_hours = float(input("Sunlight hours per day: "))
+efficiency = float(input("System efficiency (%): "))
 
-# Convert efficiency to decimal
+# Convert values
 efficiency = efficiency / 100
+panel_kw = panel_watt / 1000
 
-# Convert panel watt to kW
-panel_power_kw = panel_watt / 1000
-
-# Energy calculation
-daily_energy = panels * panel_power_kw * sunlight_hours * efficiency
+# Calculations
+total_power_kw = panels * panel_kw
+raw_energy = total_power_kw * sunlight_hours
+usable_energy = raw_energy * efficiency
 
 # Output
-print("\n--- Solar Energy Report ---")
-print(f"Panels: {panels}")
-print(f"Panel Wattage: {panel_watt} W")
-print(f"System Efficiency: {efficiency*100:.0f}%")
-print(f"Sunlight Hours: {sunlight_hours} hrs")
+print("\n---------- RESULTS ----------")
+print(f"Total Installed Power: {total_power_kw:.2f} kW")
+print(f"Raw Daily Energy: {raw_energy:.2f} kWh")
+print(f"Usable Energy (after losses): {usable_energy:.2f} kWh")
 
-print(f"\nEstimated Daily Energy: {daily_energy:.2f} kWh")
+print("\n---------- ANALYSIS ----------")
 
-# Battery comparison
-if daily_energy > battery_capacity:
-    print("⚡ Excess energy: Your system generates MORE than battery capacity.")
-elif daily_energy < battery_capacity:
-    print("⚠️ Deficit: Your system generates LESS than battery capacity.")
+if usable_energy > battery_capacity:
+    excess = usable_energy - battery_capacity
+    print(f"⚡ System OVER capacity by {excess:.2f} kWh")
+    print("👉 You may need a larger battery or storage system.")
+elif usable_energy < battery_capacity:
+    deficit = battery_capacity - usable_energy
+    print(f"⚠️ System UNDER capacity by {deficit:.2f} kWh")
+    print("👉 Battery is underutilized or system is small.")
 else:
-    print("✅ Balanced system.")
+    print("✅ Perfect balance between generation and storage.")
+
+print("\n----------------------------")
+print("Built by Mamadu Bah | BNM Sustainable Energy")
+print("----------------------------\n")
