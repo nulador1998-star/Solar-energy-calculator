@@ -1,21 +1,20 @@
 # Solar Energy Calculator ☀️
 
-This is a simple Python project that estimates solar energy generation based on system inputs.
+A Python-based engineering tool designed to estimate solar energy production, system efficiency, and battery compatibility.
+
+## Purpose
+This project simulates real-world solar system performance to support clean energy planning and sustainability solutions.
 
 ## Features
-- Calculates daily solar energy production
-- Compares with battery storage capacity
-- Helps understand system efficiency
+- Installed power calculation
+- Energy production estimation
+- System efficiency modeling
+- Battery comparison analysis
+- Engineering-style output interpretation
 
-## Inputs
-- Number of solar panels
-- Battery capacity (kWh)
-- Sunlight hours
+## Version
+v3.0 (Professional Edition)
 
 ## Author
 Mamadu Bah  
 BNM Sustainable Energy Limited
-## New Features (v2)
-- Custom panel wattage input
-- System efficiency calculation
-- More accurate energy estimation
