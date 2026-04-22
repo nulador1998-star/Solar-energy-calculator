@@ -1,7 +1,7 @@
-# Solar Energy Calculator v3 (Professional Version)
+# Solar Energy Calculator v4 (with CO2 impact)
 
 print("\n==============================")
-print("  SOLAR ENERGY CALCULATOR")
+print("  SOLAR ENERGY + IMPACT CALCULATOR")
 print("==============================\n")
 
 # Inputs
@@ -15,30 +15,30 @@ efficiency = float(input("System efficiency (%): "))
 efficiency = efficiency / 100
 panel_kw = panel_watt / 1000
 
-# Calculations
+# Energy calculation
 total_power_kw = panels * panel_kw
 raw_energy = total_power_kw * sunlight_hours
 usable_energy = raw_energy * efficiency
 
+# CO2 calculation (important assumption)
+# 1 kWh from diesel generator ≈ 0.7 kg CO2 (average estimate)
+co2_per_kwh = 0.7
+co2_saved = usable_energy * co2_per_kwh
+
 # Output
-print("\n---------- RESULTS ----------")
-print(f"Total Installed Power: {total_power_kw:.2f} kW")
-print(f"Raw Daily Energy: {raw_energy:.2f} kWh")
-print(f"Usable Energy (after losses): {usable_energy:.2f} kWh")
+print("\n---------- ENERGY RESULTS ----------")
+print(f"Usable Energy: {usable_energy:.2f} kWh/day")
 
-print("\n---------- ANALYSIS ----------")
+print("\n---------- ENVIRONMENTAL IMPACT ----------")
+print(f"CO₂ Saved per Day: {co2_saved:.2f} kg")
 
-if usable_energy > battery_capacity:
-    excess = usable_energy - battery_capacity
-    print(f"⚡ System OVER capacity by {excess:.2f} kWh")
-    print("👉 You may need a larger battery or storage system.")
-elif usable_energy < battery_capacity:
-    deficit = battery_capacity - usable_energy
-    print(f"⚠️ System UNDER capacity by {deficit:.2f} kWh")
-    print("👉 Battery is underutilized or system is small.")
+print("\n---------- INTERPRETATION ----------")
+
+if co2_saved > 10:
+    print("🌍 High impact system — strong environmental benefit")
+elif co2_saved > 3:
+    print("🌱 Moderate impact — good for small communities")
 else:
-    print("✅ Perfect balance between generation and storage.")
+    print("⚡ Small system — scalable opportunity")
 
-print("\n----------------------------")
-print("Built by Mamadu Bah | BNM Sustainable Energy")
-print("----------------------------\n")
+print("\nBuilt by Mamadu Bah | BNM Sustainable Energy")
