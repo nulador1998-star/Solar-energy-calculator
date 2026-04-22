@@ -15,3 +15,7 @@ This is a simple Python project that estimates solar energy generation based on 
 ## Author
 Mamadu Bah  
 BNM Sustainable Energy Limited
+## New Features (v2)
+- Custom panel wattage input
+- System efficiency calculation
+- More accurate energy estimation
